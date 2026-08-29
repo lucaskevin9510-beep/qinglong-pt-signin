@@ -276,14 +276,14 @@ The script already uses `https://hhanclub.net` by default, so this variable is n
 
 ✅ Cookie login valid
 👤 User: 张三
-🫘 Current HanBean: 1,024,075
+🫘 Current HanBean: 88,888
 📅 Today: not signed in or not clearly shown on the homepage
 🎯 Starting sign-in...
 ✅ Sign-in successful
-📆 Total sign-ins: 54
-🔥 Consecutive sign-in: 1 day
+📆 Total sign-ins: 123
+🔥 Consecutive sign-in: 28 days
 🎁 Reward: 10 HanBeans
-📊 Current HanBean: 1,024,075
+📊 Current HanBean: 88,898
 
 Completed ✅
 ```
