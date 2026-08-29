@@ -26,6 +26,7 @@ Each tracker uses its own standalone script and environment variable, so every t
 | --- | --- | --- | --- |
 | PterClub | `pterclub.py` | `PTERCLUB_COOKIE` | ✅ Working |
 | HDHome | `hdhome.py` | `HDHOME_COOKIE` | ✅ Working |
+| HHanClub | `hhanclub.py` | `HHANCLUB_COOKIE` | ✅ Working |
 
 ## 🐱 PterClub
 
@@ -215,6 +216,77 @@ Completed ✅
 ```
 
 Data that cannot be confirmed from the tracker response is shown as `Not available`.
+
+---
+
+## 🫘 HHanClub
+
+### ✨ Features
+
+- Validate the login Cookie
+- Read the username
+- Read the current HanBean balance
+- Detect today's sign-in status
+- Automatically sign in when needed
+- Read the total sign-in count
+- Read consecutive sign-in days
+- Read the current HanBean reward
+- Refresh the HanBean balance after sign-in
+- Stop on 2FA, CAPTCHA, anti-bot verification, or other verification challenges instead of bypassing them
+
+### ⚙️ QingLong Setup
+
+Create the following environment variable in QingLong:
+
+```text
+Name: HHANCLUB_COOKIE
+Value: your full HHanClub Cookie
+```
+
+### 📦 Dependency
+
+```text
+requests
+```
+
+### ▶️ Task Command
+
+```bash
+python3 hhanclub.py
+```
+
+### ⏰ Suggested Schedule
+
+```cron
+31 8 * * *
+```
+
+### 🌐 Optional Environment Variable
+
+```text
+HHANCLUB_BASE_URL=https://hhanclub.net
+```
+
+The script already uses `https://hhanclub.net` by default, so this variable is normally unnecessary.
+
+## 🧾 HHanClub Example Output
+
+```text
+========== HHanClub ==========
+
+✅ Cookie login valid
+👤 User: 张三
+🫘 Current HanBean: 1,024,075
+📅 Today: not signed in or not clearly shown on the homepage
+🎯 Starting sign-in...
+✅ Sign-in successful
+📆 Total sign-ins: 54
+🔥 Consecutive sign-in: 1 day
+🎁 Reward: 10 HanBeans
+📊 Current HanBean: 1,024,075
+
+Completed ✅
+```
 
 ## ⚠️ Disclaimer
 
