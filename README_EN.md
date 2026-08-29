@@ -25,6 +25,7 @@ Each tracker uses its own standalone script and environment variable, so every t
 | Tracker | Script | Environment Variable | Status |
 | --- | --- | --- | --- |
 | PterClub | `pterclub.py` | `PTERCLUB_COOKIE` | ✅ Working |
+| HDHome | `hdhome.py` | `HDHOME_COOKIE` | ✅ Working |
 
 ## 🐱 PterClub
 
@@ -85,7 +86,7 @@ PTERCLUB_BASE_URL=https://pterclub.net
 
 The script already uses `https://pterclub.net` by default, so this variable is normally unnecessary.
 
-## 🧾 Example Output
+## 🧾 PterClub Example Output
 
 ### First sign-in of the day
 
@@ -122,6 +123,98 @@ Completed ✅
 ```
 
 If the tracker does not provide verifiable consecutive sign-in data, the script displays `Not available` instead of incorrectly treating the total sign-in count as a streak.
+
+---
+
+## 🏠 HDHome
+
+### ✨ Features
+
+- Validate the login Cookie
+- Read the username
+- Read the current magic-point balance
+- Detect today's sign-in status
+- Automatically sign in when needed
+- Try to parse total sign-in count
+- Try to parse consecutive sign-in days
+- Try to parse the current sign-in reward
+- Refresh the magic-point balance after sign-in
+- Stop on CAPTCHA, anti-bot verification, or other verification challenges instead of bypassing them
+
+### ⚙️ QingLong Setup
+
+Create the following environment variable in QingLong:
+
+```text
+Name: HDHOME_COOKIE
+Value: your full HDHome Cookie
+```
+
+### 📦 Dependency
+
+```text
+requests
+```
+
+### ▶️ Task Command
+
+```bash
+python3 hdhome.py
+```
+
+### ⏰ Suggested Schedule
+
+```cron
+23 8 * * *
+```
+
+### 🌐 Optional Environment Variable
+
+```text
+HDHOME_BASE_URL=https://hdhome.org
+```
+
+The script already uses `https://hdhome.org` by default, so this variable is normally unnecessary.
+
+## 🧾 HDHome Example Output
+
+### First sign-in of the day
+
+```text
+========== HDHome ==========
+
+✅ Cookie login valid
+👤 User: 张三
+✨ Current magic points: 88,888.8
+📅 Today: not signed in
+🎯 Starting sign-in...
+✅ Sign-in successful
+📆 Total sign-ins: 123
+🔥 Consecutive sign-in: 28 days
+🎁 Reward: 50 magic points
+📊 Current magic points: 88,938.8
+
+Completed ✅
+```
+
+### Already signed in
+
+```text
+========== HDHome ==========
+
+✅ Cookie login valid
+👤 User: 张三
+✨ Current magic points: 88,888.8
+📅 Today: already signed in
+⚠️ No duplicate sign-in needed
+📆 Total sign-ins: Not available
+🔥 Consecutive sign-in: Not available
+📊 Current magic points: 88,888.8
+
+Completed ✅
+```
+
+Data that cannot be confirmed from the tracker response is shown as `Not available`.
 
 ## ⚠️ Disclaimer
 
