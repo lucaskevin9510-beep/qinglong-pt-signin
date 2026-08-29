@@ -27,6 +27,7 @@
 | PterClub 猫站 | `pterclub.py` | `PTERCLUB_COOKIE` | ✅ 可用 |
 | HDHome | `hdhome.py` | `HDHOME_COOKIE` | ✅ 可用 |
 | HHanClub 憨憨 | `hhanclub.py` | `HHANCLUB_COOKIE` | ✅ 可用 |
+| CarPT | `carpt.py` | `CARPT_COOKIE` | ✅ 可用 |
 
 ## 🐱 PterClub 猫站
 
@@ -288,6 +289,76 @@ HHANCLUB_BASE_URL=https://hhanclub.net
 🔥 连续签到：28 天
 🎁 本次奖励：10 憨豆
 📊 当前憨豆：88,898
+
+执行完成 ✅
+```
+
+---
+
+## 🚗 CarPT
+
+### ✨ 功能
+
+- 检查 Cookie 登录状态
+- 获取用户名
+- 获取当前魔力值
+- 检查今日签到状态
+- 未签到时自动执行签到
+- 获取本次签到魔力奖励
+- 尝试获取累计签到次数
+- 尝试获取连续签到天数
+- 签到后重新读取魔力值
+- 遇到 2FA、验证码、人机验证或风控时停止，不尝试绕过
+
+### ⚙️ 青龙配置
+
+在青龙的“环境变量”中创建：
+
+```text
+名称：CARPT_COOKIE
+值：你的完整 CarPT Cookie
+```
+
+### 📦 依赖
+
+```text
+requests
+```
+
+### ▶️ 任务命令
+
+```bash
+python3 carpt.py
+```
+
+### ⏰ 建议定时
+
+```cron
+37 8 * * *
+```
+
+### 🌐 可选环境变量
+
+```text
+CARPT_BASE_URL=https://carpt.net
+```
+
+脚本默认已经使用 `https://carpt.net`，通常无需额外设置。
+
+## 🧾 CarPT 运行示例
+
+```text
+========== CarPT ==========
+
+✅ Cookie 登录有效
+👤 用户：张三
+💰 当前魔力：88,888
+📅 今日状态：已签到
+⚠️ 今日已经签到，无需重复执行
+📆 累计签到：123 次
+🔥 连续签到：28 天
+🎁 本次签到：10 魔力
+📊 当前魔力：88,888
 
 执行完成 ✅
 ```
