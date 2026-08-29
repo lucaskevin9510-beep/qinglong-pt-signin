@@ -26,6 +26,7 @@
 | --- | --- | --- | --- |
 | PterClub 猫站 | `pterclub.py` | `PTERCLUB_COOKIE` | ✅ 可用 |
 | HDHome | `hdhome.py` | `HDHOME_COOKIE` | ✅ 可用 |
+| HHanClub 憨憨 | `hhanclub.py` | `HHANCLUB_COOKIE` | ✅ 可用 |
 
 ## 🐱 PterClub 猫站
 
@@ -219,6 +220,77 @@ HDHOME_BASE_URL=https://hdhome.org
 ```
 
 无法从站点返回中确认的数据会显示“未获取”。
+
+---
+
+## 🫘 HHanClub 憨憨
+
+### ✨ 功能
+
+- 检查 Cookie 登录状态
+- 获取用户名
+- 获取当前憨豆
+- 检查今日签到状态
+- 未签到时自动执行签到
+- 获取累计签到次数
+- 获取连续签到天数
+- 获取本次憨豆奖励
+- 签到后重新读取憨豆余额
+- 遇到 2FA、验证码、人机验证或风控时停止，不尝试绕过
+
+### ⚙️ 青龙配置
+
+在青龙的“环境变量”中创建：
+
+```text
+名称：HHANCLUB_COOKIE
+值：你的完整 HHanClub Cookie
+```
+
+### 📦 依赖
+
+```text
+requests
+```
+
+### ▶️ 任务命令
+
+```bash
+python3 hhanclub.py
+```
+
+### ⏰ 建议定时
+
+```cron
+31 8 * * *
+```
+
+### 🌐 可选环境变量
+
+```text
+HHANCLUB_BASE_URL=https://hhanclub.net
+```
+
+脚本默认已经使用 `https://hhanclub.net`，通常无需额外设置。
+
+## 🧾 HHanClub 运行示例
+
+```text
+========== HHanClub 憨憨 ==========
+
+✅ Cookie 登录有效
+👤 用户：张三
+🫘 当前憨豆：1,024,075
+📅 今日状态：未签到或首页未明确显示
+🎯 开始签到...
+✅ 签到成功
+📆 累计签到：54 次
+🔥 连续签到：1 天
+🎁 本次奖励：10 憨豆
+📊 当前憨豆：1,024,075
+
+执行完成 ✅
+```
 
 ## ⚠️ 免责声明
 
