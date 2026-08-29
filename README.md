@@ -9,24 +9,24 @@ A collection of PT tracker auto sign-in scripts for QingLong. Each tracker uses 
 本仓库中的账号、UID、Cookie、积分和签到数据均为**虚构演示数据**，不对应任何真实用户。为了让文档、截图和示例保持一致，统一使用下面这套演示身份：
 
 ```text
-演示用户名：张三李四王二麻子
+演示用户名：张三
 演示 UID：10086
 演示猫粮：88,888.8
 演示连续签到：28 天
 演示签到奖励：150 猫粮
 ```
 
-PterClub / NexusPHP Cookie 演示格式：
+PterClub Cookie 演示格式：
 
 ```text
-c_secure_uid=10086; c_secure_pass=FAKE_TEST_00000000000000000000000000000000; c_secure_login=bm9wZQ%3D%3D; c_secure_ssl=eWVhaA%3D%3D; c_secure_tracker_ssl=eWVhaA%3D%3D
+c_lang_folder=chs; c_secure_uid=<BASE64_UID>; c_secure_pass=v2%3A<FAKE_ENCRYPTED_PASS>.<FAKE_SIGNATURE>; c_secure_ssl=<BASE64_SSL_FLAG>; c_secure_tracker_ssl=<BASE64_TRACKER_SSL_FLAG>; c_secure_login=<BASE64_LOGIN_FLAG>; PHPSESSID=<FAKE_SESSION_ID>
 ```
 
-> ⚠️ 上面的 Cookie 只有字段结构与真实 NexusPHP Cookie 类似，所有凭证值都是故意构造的无效演示值，无法登录任何账号。仓库中禁止提交真实 Cookie、Passkey、Token、密码或其他账号凭证。
+> ⚠️ 上面的 Cookie 只保留真实字段名、字段顺序和整体结构，所有值都是明确的占位符，不能用于登录。仓库中禁止提交真实 Cookie、Passkey、Token、密码或其他账号凭证。
 
 All usernames, UIDs, cookies, bonus balances, and sign-in data in this repository are **fictional demo data**. They do not belong to any real user. The same demo identity is used consistently throughout documentation and examples.
 
-The Cookie example above mirrors the common NexusPHP Cookie key/value structure, but every credential value is intentionally fake and unusable.
+The Cookie example above mirrors the current PterClub field layout and overall value structure, while all values are explicit placeholders and cannot be used to log in.
 
 ## 已支持 / Supported
 
@@ -57,10 +57,10 @@ The Cookie example above mirrors the common NexusPHP Cookie key/value structure,
 值：你的完整 PterClub Cookie
 ```
 
-如果只是阅读文档或测试变量格式，可以参考下面的**无效虚拟 Cookie**：
+如果只是阅读文档或核对变量格式，可以参考下面的**无效占位示例**：
 
 ```text
-PTERCLUB_COOKIE=c_secure_uid=10086; c_secure_pass=FAKE_TEST_00000000000000000000000000000000; c_secure_login=bm9wZQ%3D%3D; c_secure_ssl=eWVhaA%3D%3D; c_secure_tracker_ssl=eWVhaA%3D%3D
+PTERCLUB_COOKIE=c_lang_folder=chs; c_secure_uid=<BASE64_UID>; c_secure_pass=v2%3A<FAKE_ENCRYPTED_PASS>.<FAKE_SIGNATURE>; c_secure_ssl=<BASE64_SSL_FLAG>; c_secure_tracker_ssl=<BASE64_TRACKER_SSL_FLAG>; c_secure_login=<BASE64_LOGIN_FLAG>; PHPSESSID=<FAKE_SESSION_ID>
 ```
 
 > ⚠️ Cookie 属于账号凭证，请只保存在你自己的青龙环境变量中。不要提交到 GitHub、Issue、日志截图或其他公开位置。
@@ -105,7 +105,7 @@ PTERCLUB_BASE_URL=https://pterclub.net
 ========== PterClub 猫站 ==========
 
 ✅ Cookie 登录有效
-👤 用户：张三李四王二麻子
+👤 用户：张三
 🐱 当前猫粮：88,888.8
 📅 今日状态：未签到
 🎯 开始签到...
@@ -123,7 +123,7 @@ PTERCLUB_BASE_URL=https://pterclub.net
 ========== PterClub 猫站 ==========
 
 ✅ Cookie 登录有效
-👤 用户：张三李四王二麻子
+👤 用户：张三
 🐱 当前猫粮：88,888.8
 📅 今日状态：已签到
 ⚠️ 今日已经签到，无需重复执行
@@ -146,20 +146,20 @@ This repository provides PT tracker sign-in scripts designed for QingLong.
 All examples use the same fictional identity:
 
 ```text
-Demo username: 张三李四王二麻子
+Demo username: 张三
 Demo UID: 10086
 Demo cat-food balance: 88,888.8
 Demo consecutive sign-in: 28 days
 Demo sign-in reward: 150 cat-food points
 ```
 
-Fake Cookie example using the common NexusPHP structure:
+Fake Cookie example using the current PterClub field layout:
 
 ```text
-c_secure_uid=10086; c_secure_pass=FAKE_TEST_00000000000000000000000000000000; c_secure_login=bm9wZQ%3D%3D; c_secure_ssl=eWVhaA%3D%3D; c_secure_tracker_ssl=eWVhaA%3D%3D
+c_lang_folder=chs; c_secure_uid=<BASE64_UID>; c_secure_pass=v2%3A<FAKE_ENCRYPTED_PASS>.<FAKE_SIGNATURE>; c_secure_ssl=<BASE64_SSL_FLAG>; c_secure_tracker_ssl=<BASE64_TRACKER_SSL_FLAG>; c_secure_login=<BASE64_LOGIN_FLAG>; PHPSESSID=<FAKE_SESSION_ID>
 ```
 
-This Cookie is intentionally invalid and cannot log in to any account.
+This example preserves the real field names and overall structure, but every value is an explicit placeholder and cannot be used to log in.
 
 ### PterClub features
 
@@ -182,10 +182,10 @@ Name: PTERCLUB_COOKIE
 Value: your full PterClub Cookie
 ```
 
-Fake format-only example:
+Format-only placeholder example:
 
 ```text
-PTERCLUB_COOKIE=c_secure_uid=10086; c_secure_pass=FAKE_TEST_00000000000000000000000000000000; c_secure_login=bm9wZQ%3D%3D; c_secure_ssl=eWVhaA%3D%3D; c_secure_tracker_ssl=eWVhaA%3D%3D
+PTERCLUB_COOKIE=c_lang_folder=chs; c_secure_uid=<BASE64_UID>; c_secure_pass=v2%3A<FAKE_ENCRYPTED_PASS>.<FAKE_SIGNATURE>; c_secure_ssl=<BASE64_SSL_FLAG>; c_secure_tracker_ssl=<BASE64_TRACKER_SSL_FLAG>; c_secure_login=<BASE64_LOGIN_FLAG>; PHPSESSID=<FAKE_SESSION_ID>
 ```
 
 > ⚠️ Your real Cookie is an account credential. Keep it only in your private QingLong environment variables. Never commit it to GitHub or publish it in issues, screenshots, or logs.
