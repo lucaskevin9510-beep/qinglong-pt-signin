@@ -219,7 +219,7 @@ Data that cannot be confirmed from the tracker response is shown as `Not availab
 
 ---
 
-## 🫘 HHanClub
+## 💰 HHanClub
 
 ### ✨ Features
 
@@ -276,7 +276,7 @@ The script already uses `https://hhanclub.net` by default, so this variable is n
 
 ✅ Cookie login valid
 👤 User: 张三
-🫘 Current HanBean: 88,888
+💰 Current HanBean: 88,888
 📅 Today: not signed in or not clearly shown on the homepage
 🎯 Starting sign-in...
 ✅ Sign-in successful
