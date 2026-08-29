@@ -126,7 +126,6 @@ def parse_username(html: str) -> Optional[str]:
         if m:
             return m.group(1).strip()
 
-    # NexusPHP 常见用户详情链接
     matches = re.findall(
         r'<a[^>]+href=["\'][^"\']*userdetails\.php\?id=\d+[^"\']*["\'][^>]*>([\s\S]*?)</a>',
         html or "",
@@ -179,9 +178,6 @@ def number_from_string(value: str) -> Optional[float]:
 def parse_hanbean(html: str) -> Optional[float]:
     text = clean_text(html)
 
-    # HHanClub 首页常见区域会出现：
-    # [签到得憨豆] [邀请] : N 123,456 [勋章] 1.23 TB ...
-    # 这里优先解析“邀请数后面的憨豆余额”。
     panel_patterns = [
         r"\[?签到得憨豆\]?\s*\[?邀请\]?\s*[:：]\s*\d+\s+([0-9][0-9,.]*)\s*\[?勋章\]?",
         r"签到得憨豆\s+邀请\s*[:：]?\s*\d+\s+([0-9][0-9,.]*)",
@@ -241,8 +237,6 @@ def parse_attendance(html: str) -> Dict[str, object]:
         "message": "",
     }
 
-    # NexusPHP 常见：
-    # 这是您的第 N 次签到，已连续签到 N 天，本次签到获得 N 个憨豆。
     full_patterns = [
         (
             r"这是您的第\s*(\d+)\s*次签到[,，]?\s*"
@@ -383,7 +377,7 @@ def main() -> int:
     print("✅ Cookie 登录有效")
     print(f"👤 用户：{username}")
     if before_bean is not None:
-        print(f"🫘 当前憨豆：{fmt_number(before_bean)}")
+        print(f"💰 当前憨豆：{fmt_number(before_bean)}")
 
     if home_signed:
         print("📅 今日状态：已签到")
@@ -393,9 +387,6 @@ def main() -> int:
     if not home_signed:
         print("🎯 开始签到...")
 
-    # HHanClub 仍使用 NexusPHP 的 attendance.php 签到入口。
-    # 即使首页已经显示已签到，也访问一次 attendance.php 获取权威状态；
-    # 已签到时通常只会返回“今天已经签到”的提示，不会重复发放奖励。
     try:
         att_resp = get(session, "/attendance.php", referer=BASE_URL + "/")
         att_html = att_resp.text or ""
@@ -470,7 +461,6 @@ def main() -> int:
     except Exception:
         after_bean = before_bean
 
-    # 若 attendance.php 没明确给奖励，则用签到前后憨豆差值兜底。
     if (
         reward is None
         and not (parsed["already"] or home_signed)
