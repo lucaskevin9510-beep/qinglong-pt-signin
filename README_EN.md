@@ -10,6 +10,16 @@ A collection of automated PT tracker sign-in scripts designed for QingLong.
 
 Each tracker uses its own standalone script and environment variable, so every tracker can be enabled, disabled, scheduled, and maintained independently.
 
+## 🧪 Example
+
+```text
+👤 Username: 张三
+🆔 UID: 10086
+🐱 Cat-food: 88,888.8
+🔥 Consecutive sign-in: 28 days
+🎁 Sign-in reward: 150 cat-food points
+```
+
 ## ✅ Supported Trackers
 
 | Tracker | Script | Environment Variable | Status |
