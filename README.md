@@ -10,26 +10,6 @@
 
 每个 PT 站使用独立脚本、独立环境变量，方便单独启用、停用、定时和维护。
 
-## 🧪 演示账号与示例
-
-仓库里展示的账号、Cookie、积分和签到结果全部都是虚构示例，不对应任何真实用户。
-
-```text
-👤 演示用户名：张三
-🆔 演示 UID：10086
-🐱 演示猫粮：88,888.8
-🔥 演示连续签到：28 天
-🎁 演示签到奖励：150 猫粮
-```
-
-PterClub Cookie 结构示例：
-
-```text
-c_lang_folder=chs; c_secure_uid=<BASE64_UID>; c_secure_pass=v2%3A<FAKE_ENCRYPTED_PASS>.<FAKE_SIGNATURE>; c_secure_ssl=<BASE64_SSL_FLAG>; c_secure_tracker_ssl=<BASE64_TRACKER_SSL_FLAG>; c_secure_login=<BASE64_LOGIN_FLAG>; PHPSESSID=<FAKE_SESSION_ID>
-```
-
-> ⚠️ 上面的 Cookie 保留了真实字段名、字段顺序和整体结构，但所有值都是明确的占位符，不能用于登录任何账号。
-
 ## ✅ 已支持站点
 
 | 站点 | 脚本 | 环境变量 | 状态 |
@@ -59,13 +39,13 @@ c_lang_folder=chs; c_secure_uid=<BASE64_UID>; c_secure_pass=v2%3A<FAKE_ENCRYPTED
 值：你的完整 PterClub Cookie
 ```
 
-只想核对格式时，可以参考下面这个无效示例：
+Cookie 格式示例：
 
 ```text
 PTERCLUB_COOKIE=c_lang_folder=chs; c_secure_uid=<BASE64_UID>; c_secure_pass=v2%3A<FAKE_ENCRYPTED_PASS>.<FAKE_SIGNATURE>; c_secure_ssl=<BASE64_SSL_FLAG>; c_secure_tracker_ssl=<BASE64_TRACKER_SSL_FLAG>; c_secure_login=<BASE64_LOGIN_FLAG>; PHPSESSID=<FAKE_SESSION_ID>
 ```
 
-> 🔐 真实 Cookie 属于账号凭证，只应保存在你自己的青龙环境变量中。不要提交到 GitHub、Issue、日志截图或其他公开位置。
+> 🔐 请把上面的占位内容替换为你自己的 Cookie，并只保存在青龙环境变量中。
 
 ### 📦 依赖
 
@@ -136,10 +116,6 @@ PTERCLUB_BASE_URL=https://pterclub.net
 ```
 
 如果站点没有提供可以确认的连续签到数据，脚本会显示“未获取”，不会把累计签到次数误认为连续签到天数。
-
-## 🔐 凭证安全
-
-仓库中不要提交任何真实 Cookie、Passkey、Token、密码、Session ID 或其他账号凭证。
 
 ## ⚠️ 免责声明
 
