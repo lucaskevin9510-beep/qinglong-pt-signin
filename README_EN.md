@@ -27,6 +27,7 @@ Each tracker uses its own standalone script and environment variable, so every t
 | PterClub | `pterclub.py` | `PTERCLUB_COOKIE` | ✅ Working |
 | HDHome | `hdhome.py` | `HDHOME_COOKIE` | ✅ Working |
 | HHanClub | `hhanclub.py` | `HHANCLUB_COOKIE` | ✅ Working |
+| CarPT | `carpt.py` | `CARPT_COOKIE` | ✅ Working |
 
 ## 🐱 PterClub
 
@@ -284,6 +285,76 @@ The script already uses `https://hhanclub.net` by default, so this variable is n
 🔥 Consecutive sign-in: 28 days
 🎁 Reward: 10 HanBeans
 📊 Current HanBean: 88,898
+
+Completed ✅
+```
+
+---
+
+## 🚗 CarPT
+
+### ✨ Features
+
+- Validate the login Cookie
+- Read the username
+- Read the current magic-point balance
+- Detect today's sign-in status
+- Automatically sign in when needed
+- Read the current sign-in reward
+- Try to parse total sign-in count
+- Try to parse consecutive sign-in days
+- Refresh the magic-point balance after sign-in
+- Stop on 2FA, CAPTCHA, anti-bot verification, or other verification challenges instead of bypassing them
+
+### ⚙️ QingLong Setup
+
+Create the following environment variable in QingLong:
+
+```text
+Name: CARPT_COOKIE
+Value: your full CarPT Cookie
+```
+
+### 📦 Dependency
+
+```text
+requests
+```
+
+### ▶️ Task Command
+
+```bash
+python3 carpt.py
+```
+
+### ⏰ Suggested Schedule
+
+```cron
+37 8 * * *
+```
+
+### 🌐 Optional Environment Variable
+
+```text
+CARPT_BASE_URL=https://carpt.net
+```
+
+The script already uses `https://carpt.net` by default, so this variable is normally unnecessary.
+
+## 🧾 CarPT Example Output
+
+```text
+========== CarPT ==========
+
+✅ Cookie login valid
+👤 User: 张三
+💰 Current magic points: 88,888
+📅 Today: already signed in
+⚠️ No duplicate sign-in needed
+📆 Total sign-ins: 123
+🔥 Consecutive sign-in: 28 days
+🎁 Current sign-in: 10 magic points
+📊 Current magic points: 88,888
 
 Completed ✅
 ```
