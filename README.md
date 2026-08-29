@@ -223,7 +223,7 @@ HDHOME_BASE_URL=https://hdhome.org
 
 ---
 
-## 🫘 HHanClub 憨憨
+## 💰 HHanClub 憨憨
 
 ### ✨ 功能
 
@@ -280,7 +280,7 @@ HHANCLUB_BASE_URL=https://hhanclub.net
 
 ✅ Cookie 登录有效
 👤 用户：张三
-🫘 当前憨豆：88,888
+💰 当前憨豆：88,888
 📅 今日状态：未签到或首页未明确显示
 🎯 开始签到...
 ✅ 签到成功
