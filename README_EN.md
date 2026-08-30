@@ -29,6 +29,7 @@ Each tracker uses its own standalone script and environment variable, so every t
 | HHanClub | `hhanclub.py` | `HHANCLUB_COOKIE` | ✅ Working |
 | CarPT | `carpt.py` | `CARPT_COOKIE` | ✅ Working |
 | HDArea | `hdarea.py` | `HDAREA_COOKIE` | ✅ Working |
+| UBits | `ubits.py` | `UBITS_COOKIE` | ✅ Working |
 
 ## 🐱 PterClub
 
@@ -424,6 +425,77 @@ The script already uses `https://hdarea.club` by default, so this variable is no
 ⚠️ No duplicate sign-in needed
 💬 Tracker response: Already signed in today
 📊 Current magic points: 88,888.8
+
+Completed ✅
+```
+
+---
+
+## 💎 UBits
+
+### ✨ Features
+
+- Validate the login Cookie
+- Read the username
+- Read the current UCoin balance
+- Detect today's sign-in status
+- Automatically sign in when needed
+- Use `attendance.php` for the daily sign-in
+- Read the total sign-in count
+- Read consecutive sign-in days
+- Read the current UCoin reward
+- Refresh the UCoin balance after sign-in
+- Stop on 2FA, CAPTCHA, Cloudflare Challenge, anti-bot verification, or other verification challenges instead of bypassing them
+
+### ⚙️ QingLong Setup
+
+Create the following environment variable in QingLong:
+
+```text
+Name: UBITS_COOKIE
+Value: your full UBits Cookie
+```
+
+### 📦 Dependency
+
+```text
+requests
+```
+
+### ▶️ Task Command
+
+```bash
+python3 ubits.py
+```
+
+### ⏰ Suggested Schedule
+
+```cron
+49 8 * * *
+```
+
+### 🌐 Optional Environment Variable
+
+```text
+UBITS_BASE_URL=https://ubits.club
+```
+
+The script already uses `https://ubits.club` by default, so this variable is normally unnecessary.
+
+## 🧾 UBits Example Output
+
+```text
+========== UBits ==========
+
+✅ Cookie login valid
+👤 User: 张三
+💰 Current UCoin: 88,888.8
+📅 Today: already signed in
+⚠️ No duplicate sign-in needed
+📆 Total sign-ins: 54
+🔥 Consecutive sign-in: 1 day
+🎁 Current sign-in: 10 UCoins
+📊 Current UCoin: 88,888.8
 
 Completed ✅
 ```
