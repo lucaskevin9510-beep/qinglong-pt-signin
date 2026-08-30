@@ -28,6 +28,7 @@
 | HDHome | `hdhome.py` | `HDHOME_COOKIE` | ✅ 可用 |
 | HHanClub 憨憨 | `hhanclub.py` | `HHANCLUB_COOKIE` | ✅ 可用 |
 | CarPT | `carpt.py` | `CARPT_COOKIE` | ✅ 可用 |
+| HDArea 好大 | `hdarea.py` | `HDAREA_COOKIE` | ✅ 可用 |
 
 ## 🐱 PterClub 猫站
 
@@ -359,6 +360,74 @@ CARPT_BASE_URL=https://carpt.net
 🔥 连续签到：28 天
 🎁 本次签到：10 魔力
 📊 当前魔力：88,888
+
+执行完成 ✅
+```
+
+---
+
+## 🌊 HDArea 好大
+
+### ✨ 功能
+
+- 检查 Cookie 登录状态
+- 获取用户名
+- 获取当前魔力值
+- 检查今日签到状态
+- 未签到时自动执行签到
+- 使用 `sign_in.php` 完成每日签到
+- 尝试获取本次签到奖励
+- 显示站点返回信息
+- 签到后重新读取魔力值
+- 遇到验证码、人机验证或风控时停止，不尝试绕过
+
+### ⚙️ 青龙配置
+
+在青龙的“环境变量”中创建：
+
+```text
+名称：HDAREA_COOKIE
+值：你的完整 HDArea Cookie
+```
+
+### 📦 依赖
+
+```text
+requests
+```
+
+### ▶️ 任务命令
+
+```bash
+python3 hdarea.py
+```
+
+### ⏰ 建议定时
+
+```cron
+43 8 * * *
+```
+
+### 🌐 可选环境变量
+
+```text
+HDAREA_BASE_URL=https://hdarea.club
+```
+
+脚本默认已经使用 `https://hdarea.club`，通常无需额外设置。
+
+## 🧾 HDArea 运行示例
+
+```text
+========== HDArea 好大 ==========
+
+✅ Cookie 登录有效
+👤 用户：张三
+💰 当前魔力：88,888.8
+📅 今日状态：已签到
+⚠️ 今日已经签到，无需重复执行
+💬 站点返回：请不要重复签到哦！
+📊 当前魔力：88,888.8
 
 执行完成 ✅
 ```
