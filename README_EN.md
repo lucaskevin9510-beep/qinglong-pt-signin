@@ -34,6 +34,7 @@ Each tracker uses its own standalone script and environment variable, so every t
 | PTSKIT | `ptskit.py` | `PTSKIT_COOKIE` | ✅ Working |
 | MomentPT | `moment.py` | `MOMENT_COOKIE` | ✅ Working |
 | HXPT | `hxpt.py` | `HXPT_COOKIE` | ✅ Working |
+| XingYunGePT | `xingyunge.py` | `XINGYUNGE_COOKIE` | ✅ Working |
 
 ## 🐱 PterClub
 
@@ -803,6 +804,84 @@ The script already uses `https://www.hxpt.org` by default, so this variable is n
 📈 Ratio: 102.345
 📅 Today: already signed in
 ⚠️ No duplicate sign-in needed
+
+Completed ✅
+```
+
+
+---
+
+## 🌠 XingYunGePT
+
+### ✨ Features
+
+- Use `curl_cffi` with a Chrome browser fingerprint to access the tracker
+- Validate the login Cookie and read the username and UID
+- Read the current Starflame balance precisely using the `mybonus.php` anchor
+- Read upload total, download total, and ratio from the homepage
+- Detect the daily sign-in state through `attendance.php`
+- Automatically sign in when needed
+- Read the current Starflame sign-in reward
+- Re-read the Starflame balance after sign-in and display the actual change
+- Send the Cookie only to the current XingYunGePT domain and stop on external redirects
+- Stop on 2FA, CAPTCHA, anti-bot verification, or other verification challenges instead of bypassing them
+
+### ⚙️ QingLong Setup
+
+Create the following environment variable in QingLong:
+
+```text
+Name: XINGYUNGE_COOKIE
+Value: your full XingYunGePT Cookie
+```
+
+### 📦 Dependency
+
+```text
+curl_cffi
+```
+
+If QingLong already shows `curl_cffi` as installed but the script still cannot start correctly, verify that Python can import `cffi`, `_cffi_backend`, and `curl_cffi` successfully.
+
+### ▶️ Task Command
+
+```bash
+python3 xingyunge.py
+```
+
+### ⏰ Suggested Schedule
+
+```cron
+19 9 * * *
+```
+
+### 🌐 Optional Environment Variable
+
+```text
+XINGYUNGE_BASE_URL=https://pt.xingyungept.org
+```
+
+The script already uses `https://pt.xingyungept.org` by default, so this variable is normally unnecessary.
+
+## 🧾 XingYunGePT Example Output
+
+```text
+========== 星陨阁 ==========
+
+🌐 Network mode: curl_cffi Chrome fingerprint
+✅ Cookie login valid
+👤 User: 张三
+🆔 UID: 10086
+🌟 Current Starflame: 88,888.8
+⬆️ Uploaded: 8.888 TB
+⬇️ Downloaded: 888.88 GB
+📈 Ratio: 10.123
+📅 Today: not signed in
+🎯 Starting sign-in...
+✅ Sign-in successful
+🎁 Today's sign-in: 10 Starflame
+📊 Current Starflame: 88,898.8
+🎁 Starflame change: +10
 
 Completed ✅
 ```
