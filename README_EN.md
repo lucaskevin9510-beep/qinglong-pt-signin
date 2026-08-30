@@ -28,6 +28,7 @@ Each tracker uses its own standalone script and environment variable, so every t
 | HDHome | `hdhome.py` | `HDHOME_COOKIE` | ✅ Working |
 | HHanClub | `hhanclub.py` | `HHANCLUB_COOKIE` | ✅ Working |
 | CarPT | `carpt.py` | `CARPT_COOKIE` | ✅ Working |
+| HDArea | `hdarea.py` | `HDAREA_COOKIE` | ✅ Working |
 
 ## 🐱 PterClub
 
@@ -355,6 +356,74 @@ The script already uses `https://carpt.net` by default, so this variable is norm
 🔥 Consecutive sign-in: 28 days
 🎁 Current sign-in: 10 magic points
 📊 Current magic points: 88,888
+
+Completed ✅
+```
+
+---
+
+## 🌊 HDArea
+
+### ✨ Features
+
+- Validate the login Cookie
+- Read the username
+- Read the current magic-point balance
+- Detect today's sign-in status
+- Automatically sign in when needed
+- Use `sign_in.php` for the daily sign-in
+- Try to parse the current sign-in reward
+- Display the tracker's response message
+- Refresh the magic-point balance after sign-in
+- Stop on CAPTCHA, anti-bot verification, or other verification challenges instead of bypassing them
+
+### ⚙️ QingLong Setup
+
+Create the following environment variable in QingLong:
+
+```text
+Name: HDAREA_COOKIE
+Value: your full HDArea Cookie
+```
+
+### 📦 Dependency
+
+```text
+requests
+```
+
+### ▶️ Task Command
+
+```bash
+python3 hdarea.py
+```
+
+### ⏰ Suggested Schedule
+
+```cron
+43 8 * * *
+```
+
+### 🌐 Optional Environment Variable
+
+```text
+HDAREA_BASE_URL=https://hdarea.club
+```
+
+The script already uses `https://hdarea.club` by default, so this variable is normally unnecessary.
+
+## 🧾 HDArea Example Output
+
+```text
+========== HDArea ==========
+
+✅ Cookie login valid
+👤 User: 张三
+💰 Current magic points: 88,888.8
+📅 Today: already signed in
+⚠️ No duplicate sign-in needed
+💬 Tracker response: Already signed in today
+📊 Current magic points: 88,888.8
 
 Completed ✅
 ```
