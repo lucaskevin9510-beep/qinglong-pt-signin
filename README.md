@@ -34,6 +34,7 @@
 | PTSKIT 拾刻 | `ptskit.py` | `PTSKIT_COOKIE` | ✅ 可用 |
 | MomentPT | `moment.py` | `MOMENT_COOKIE` | ✅ 可用 |
 | HXPT 好学 | `hxpt.py` | `HXPT_COOKIE` | ✅ 可用 |
+| 星陨阁 | `xingyunge.py` | `XINGYUNGE_COOKIE` | ✅ 可用 |
 
 ## 🐱 PterClub 猫站
 
@@ -807,6 +808,84 @@ HXPT_BASE_URL=https://www.hxpt.org
 📈 分享率：102.345
 📅 今日状态：已签到
 ⚠️ 今日已经签到，无需重复执行
+
+执行完成 ✅
+```
+
+
+---
+
+## 🌠 星陨阁
+
+### ✨ 功能
+
+- 使用 `curl_cffi` 的 Chrome 浏览器指纹访问站点
+- 检查 Cookie 登录状态并读取用户名、UID
+- 通过 `mybonus.php` 精确读取当前星焱
+- 从首页读取上传量、下载量和分享率
+- 检查 `attendance.php` 签到状态
+- 未签到时自动执行每日签到
+- 获取本次签到星焱奖励
+- 签到后重新读取星焱，并显示实际变化量
+- Cookie 只发送给星陨阁当前域名，外域跳转会直接停止
+- 遇到 2FA、验证码、人机验证或风控时停止，不尝试绕过
+
+### ⚙️ 青龙配置
+
+在青龙的“环境变量”中创建：
+
+```text
+名称：XINGYUNGE_COOKIE
+值：你的完整星陨阁 Cookie
+```
+
+### 📦 依赖
+
+```text
+curl_cffi
+```
+
+如果青龙中已经显示安装 `curl_cffi`，但脚本仍无法正常启动，可以额外确认 Python 能正常导入 `cffi`、`_cffi_backend` 和 `curl_cffi`。
+
+### ▶️ 任务命令
+
+```bash
+python3 xingyunge.py
+```
+
+### ⏰ 建议定时
+
+```cron
+19 9 * * *
+```
+
+### 🌐 可选环境变量
+
+```text
+XINGYUNGE_BASE_URL=https://pt.xingyungept.org
+```
+
+脚本默认已经使用 `https://pt.xingyungept.org`，通常无需额外设置。
+
+## 🧾 星陨阁运行示例
+
+```text
+========== 星陨阁 ==========
+
+🌐 网络模式：curl_cffi Chrome 指纹
+✅ Cookie 登录有效
+👤 用户：张三
+🆔 UID：10086
+🌟 当前星焱：88,888.8
+⬆️ 上传量：8.888 TB
+⬇️ 下载量：888.88 GB
+📈 分享率：10.123
+📅 今日状态：未签到
+🎯 开始签到...
+✅ 签到成功
+🎁 今日签到：10 星焱
+📊 当前星焱：88,898.8
+🎁 星焱变化：+10
 
 执行完成 ✅
 ```
