@@ -31,6 +31,7 @@ Each tracker uses its own standalone script and environment variable, so every t
 | HDArea | `hdarea.py` | `HDAREA_COOKIE` | ✅ Working |
 | UBits | `ubits.py` | `UBITS_COOKIE` | ✅ Working |
 | QingWa | `qingwa.py` | `QINGWA_COOKIE` | ✅ Working |
+| PTSKIT | `ptskit.py` | `PTSKIT_COOKIE` | ✅ Working |
 
 ## 🐱 PterClub
 
@@ -578,6 +579,78 @@ Completed ✅
 ```
 
 If the automatic `蛙总，求上传` request has already been sent for the current day, the script skips the duplicate message.
+
+---
+
+## ⏱️ PTSKIT
+
+### ✨ Features
+
+- Validate the login Cookie and read the username and UID
+- Read the current magic-point balance precisely from the homepage
+- Read upload, download, and seed-point totals from the homepage
+- Detect today's sign-in status
+- Use `attendance.php` for the daily sign-in when needed
+- Read today's magic-point sign-in reward
+- Read the number of makeup sign-in cards
+- Try to read total sign-in count and consecutive sign-in days
+- Refresh the magic-point balance after sign-in
+- Stop on 2FA, CAPTCHA, anti-bot verification, or other verification challenges instead of bypassing them
+
+### ⚙️ QingLong Setup
+
+Create the following environment variable in QingLong:
+
+```text
+Name: PTSKIT_COOKIE
+Value: your full PTSKIT Cookie
+```
+
+### 📦 Dependency
+
+```text
+requests
+```
+
+### ▶️ Task Command
+
+```bash
+python3 ptskit.py
+```
+
+### ⏰ Suggested Schedule
+
+```cron
+59 8 * * *
+```
+
+### 🌐 Optional Environment Variable
+
+```text
+PTSKIT_BASE_URL=https://www.ptskit.com
+```
+
+The script already uses `https://www.ptskit.com` by default, so this variable is normally unnecessary.
+
+## 🧾 PTSKIT Example Output
+
+```text
+========== PTSKIT ==========
+
+✅ Cookie login valid
+👤 User: 张三
+🆔 UID: 10086
+💰 Current magic points: 88,888.8
+⬆️ Uploaded: 60.485 TB
+⬇️ Downloaded: 1.116 TB
+🌱 Seed points: 149,087
+📅 Today: already signed in
+⚠️ No duplicate sign-in needed
+🎁 Today's sign-in: 10 magic points
+🎫 Makeup cards: 20
+
+Completed ✅
+```
 
 ## ⚠️ Disclaimer
 
