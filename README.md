@@ -31,6 +31,7 @@
 | HDArea 好大 | `hdarea.py` | `HDAREA_COOKIE` | ✅ 可用 |
 | UBits | `ubits.py` | `UBITS_COOKIE` | ✅ 可用 |
 | QingWa 青蛙 | `qingwa.py` | `QINGWA_COOKIE` | ✅ 可用 |
+| PTSKIT 拾刻 | `ptskit.py` | `PTSKIT_COOKIE` | ✅ 可用 |
 
 ## 🐱 PterClub 猫站
 
@@ -582,6 +583,78 @@ QINGWA_BASE_URL=https://www.qingwapt.com
 ```
 
 当天已经自动发送过“蛙总，求上传”时，脚本会跳过重复发送。
+
+---
+
+## ⏱️ PTSKIT 拾刻
+
+### ✨ 功能
+
+- 检查 Cookie 登录状态并读取用户名、UID
+- 从首页精确读取当前魔力值
+- 从首页读取上传量、下载量和做种积分
+- 检查今日签到状态
+- 未签到时使用 `attendance.php` 完成每日签到
+- 获取今日签到魔力奖励
+- 获取补签卡数量
+- 尝试获取累计签到次数和连续签到天数
+- 签到后重新读取魔力值
+- 遇到 2FA、验证码、人机验证或风控时停止，不尝试绕过
+
+### ⚙️ 青龙配置
+
+在青龙的“环境变量”中创建：
+
+```text
+名称：PTSKIT_COOKIE
+值：你的完整 PTSKIT Cookie
+```
+
+### 📦 依赖
+
+```text
+requests
+```
+
+### ▶️ 任务命令
+
+```bash
+python3 ptskit.py
+```
+
+### ⏰ 建议定时
+
+```cron
+59 8 * * *
+```
+
+### 🌐 可选环境变量
+
+```text
+PTSKIT_BASE_URL=https://www.ptskit.com
+```
+
+脚本默认已经使用 `https://www.ptskit.com`，通常无需额外设置。
+
+## 🧾 PTSKIT 运行示例
+
+```text
+========== PTSKIT 拾刻 ==========
+
+✅ Cookie 登录有效
+👤 用户：张三
+🆔 UID：10086
+💰 当前魔力：88,888.8
+⬆️ 上传量：60.485 TB
+⬇️ 下载量：1.116 TB
+🌱 做种积分：149,087
+📅 今日状态：已签到
+⚠️ 今日已经签到，无需重复执行
+🎁 今日签到：10 魔力
+🎫 补签卡：20
+
+执行完成 ✅
+```
 
 ## ⚠️ 免责声明
 
