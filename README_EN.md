@@ -32,6 +32,7 @@ Each tracker uses its own standalone script and environment variable, so every t
 | UBits | `ubits.py` | `UBITS_COOKIE` | ✅ Working |
 | QingWa | `qingwa.py` | `QINGWA_COOKIE` | ✅ Working |
 | PTSKIT | `ptskit.py` | `PTSKIT_COOKIE` | ✅ Working |
+| MomentPT | `moment.py` | `MOMENT_COOKIE` | ✅ Working |
 
 ## 🐱 PterClub
 
@@ -431,6 +432,7 @@ The script already uses `https://hdarea.club` by default, so this variable is no
 Completed ✅
 ```
 
+
 ---
 
 ## 💎 UBits
@@ -651,6 +653,89 @@ The script already uses `https://www.ptskit.com` by default, so this variable is
 
 Completed ✅
 ```
+
+---
+
+## 🎞️ MomentPT
+
+### ✨ Features
+
+- Validate the login Cookie and read the username and UID
+- Read the current magic-point balance, upload total, and download total from the homepage
+- Detect today's sign-in status and use `attendance.php` when sign-in is needed
+- Read today's magic-point reward and makeup-card count
+- Send `茄子` and then `保一条` to the shoutbox once per day
+- Wait a random 4–5 seconds between the two messages
+- Keep per-UID, per-date, per-message state to avoid duplicate messages
+- Re-read the magic-point balance after the shoutbox actions and display any change
+- Stop on external redirects instead of continuing with the login Cookie
+- Stop on 2FA, CAPTCHA, anti-bot verification, or other verification challenges instead of bypassing them
+
+### ⚙️ QingLong Setup
+
+Create the following environment variable in QingLong:
+
+```text
+Name: MOMENT_COOKIE
+Value: your full MomentPT Cookie
+```
+
+### 📦 Dependency
+
+```text
+requests
+```
+
+### ▶️ Task Command
+
+```bash
+python3 moment.py
+```
+
+### ⏰ Suggested Schedule
+
+```cron
+7 9 * * *
+```
+
+### 🌐 Optional Environment Variable
+
+```text
+MOMENT_BASE_URL=https://www.momentpt.top
+```
+
+The script already uses `https://www.momentpt.top` by default, so this variable is normally unnecessary.
+
+## 🧾 MomentPT Example Output
+
+```text
+========== MomentPT ==========
+
+✅ Cookie login valid
+👤 User: 张三
+🆔 UID: 10086
+💰 Current magic points: 888,888
+⬆️ Uploaded: 8.888 TB
+⬇️ Downloaded: 888.88 GB
+📅 Today: already signed in
+⚠️ No duplicate sign-in needed
+🎁 Today's sign-in: 10 magic points
+🎫 Makeup cards: 1
+
+🎞️ Moment daily shoutbox...
+💬 Message: 茄子
+✅ Shoutbox message sent
+⏳ Waiting 4.6 seconds before the next message...
+💬 Message: 保一条
+✅ Shoutbox message sent
+
+📊 Current magic points: 889,139
+🎁 Magic-point change: +251
+
+Completed ✅
+```
+
+If a message is already recorded for the current day, only that message is skipped. A message that cannot be confirmed in shoutbox history is not recorded as sent.
 
 ## ⚠️ Disclaimer
 
