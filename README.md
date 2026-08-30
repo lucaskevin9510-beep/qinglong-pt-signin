@@ -29,6 +29,7 @@
 | HHanClub 憨憨 | `hhanclub.py` | `HHANCLUB_COOKIE` | ✅ 可用 |
 | CarPT | `carpt.py` | `CARPT_COOKIE` | ✅ 可用 |
 | HDArea 好大 | `hdarea.py` | `HDAREA_COOKIE` | ✅ 可用 |
+| UBits | `ubits.py` | `UBITS_COOKIE` | ✅ 可用 |
 
 ## 🐱 PterClub 猫站
 
@@ -428,6 +429,77 @@ HDAREA_BASE_URL=https://hdarea.club
 ⚠️ 今日已经签到，无需重复执行
 💬 站点返回：请不要重复签到哦！
 📊 当前魔力：88,888.8
+
+执行完成 ✅
+```
+
+---
+
+## 💎 UBits
+
+### ✨ 功能
+
+- 检查 Cookie 登录状态
+- 获取用户名
+- 获取当前 U币余额
+- 检查今日签到状态
+- 未签到时自动执行签到
+- 使用 `attendance.php` 完成每日签到
+- 获取累计签到次数
+- 获取连续签到天数
+- 获取本次 U币奖励
+- 签到后重新读取 U币余额
+- 遇到 2FA、验证码、人机验证、Cloudflare Challenge 或风控时停止，不尝试绕过
+
+### ⚙️ 青龙配置
+
+在青龙的“环境变量”中创建：
+
+```text
+名称：UBITS_COOKIE
+值：你的完整 UBits Cookie
+```
+
+### 📦 依赖
+
+```text
+requests
+```
+
+### ▶️ 任务命令
+
+```bash
+python3 ubits.py
+```
+
+### ⏰ 建议定时
+
+```cron
+49 8 * * *
+```
+
+### 🌐 可选环境变量
+
+```text
+UBITS_BASE_URL=https://ubits.club
+```
+
+脚本默认已经使用 `https://ubits.club`，通常无需额外设置。
+
+## 🧾 UBits 运行示例
+
+```text
+========== UBits ==========
+
+✅ Cookie 登录有效
+👤 用户：张三
+💰 当前U币：88,888.8
+📅 今日状态：已签到
+⚠️ 今日已经签到，无需重复执行
+📆 累计签到：54 次
+🔥 连续签到：1 天
+🎁 本次签到：10 U币
+📊 当前U币：88,888.8
 
 执行完成 ✅
 ```
