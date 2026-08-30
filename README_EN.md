@@ -33,6 +33,7 @@ Each tracker uses its own standalone script and environment variable, so every t
 | QingWa | `qingwa.py` | `QINGWA_COOKIE` | ✅ Working |
 | PTSKIT | `ptskit.py` | `PTSKIT_COOKIE` | ✅ Working |
 | MomentPT | `moment.py` | `MOMENT_COOKIE` | ✅ Working |
+| HXPT | `hxpt.py` | `HXPT_COOKIE` | ✅ Working |
 
 ## 🐱 PterClub
 
@@ -736,6 +737,75 @@ Completed ✅
 ```
 
 If a message is already recorded for the current day, only that message is skipped. A message that cannot be confirmed in shoutbox history is not recorded as sent.
+
+
+---
+
+## 🎓 HXPT
+
+### ✨ Features
+
+- Validate the login Cookie and read the username
+- Parse the avatar dropdown areas `cute-top-profile__summary` / `cute-top-profile__stats`
+- Read the current Fire balance, upload total, download total, and ratio
+- Use `attendance.php` for the daily sign-in
+- Detect the current day's sign-in state from the `is-attended` class
+- Read the Fire balance using the `mybonusmine.php` anchor
+- Re-read the hidden profile statistics after sign-in
+- Stop on external redirects instead of continuing with the login Cookie
+- Stop on 2FA, CAPTCHA, anti-bot verification, or other verification challenges instead of bypassing them
+
+### ⚙️ QingLong Setup
+
+Create the following environment variable in QingLong:
+
+```text
+Name: HXPT_COOKIE
+Value: your full HXPT Cookie
+```
+
+### 📦 Dependency
+
+```text
+requests
+```
+
+### ▶️ Task Command
+
+```bash
+python3 hxpt.py
+```
+
+### ⏰ Suggested Schedule
+
+```cron
+13 9 * * *
+```
+
+### 🌐 Optional Environment Variable
+
+```text
+HXPT_BASE_URL=https://www.hxpt.org
+```
+
+The script already uses `https://www.hxpt.org` by default, so this variable is normally unnecessary.
+
+## 🧾 HXPT Example Output
+
+```text
+========== HXPT 好学 ==========
+
+✅ Cookie login valid
+👤 User: 张三
+🔥 Current Fire: 88,888.8
+⬆️ Uploaded: 8.888 TB
+⬇️ Downloaded: 88.88 GB
+📈 Ratio: 102.345
+📅 Today: already signed in
+⚠️ No duplicate sign-in needed
+
+Completed ✅
+```
 
 ## ⚠️ Disclaimer
 
