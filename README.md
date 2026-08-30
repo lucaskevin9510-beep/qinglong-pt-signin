@@ -30,6 +30,7 @@
 | CarPT | `carpt.py` | `CARPT_COOKIE` | ✅ 可用 |
 | HDArea 好大 | `hdarea.py` | `HDAREA_COOKIE` | ✅ 可用 |
 | UBits | `ubits.py` | `UBITS_COOKIE` | ✅ 可用 |
+| QingWa 青蛙 | `qingwa.py` | `QINGWA_COOKIE` | ✅ 可用 |
 
 ## 🐱 PterClub 猫站
 
@@ -503,6 +504,84 @@ UBITS_BASE_URL=https://ubits.club
 
 执行完成 ✅
 ```
+
+---
+
+## 🐸 QingWa 青蛙
+
+### ✨ 功能
+
+- 检查 Cookie 登录状态并读取用户名、UID
+- 使用 `attendance.php` 完成或确认每日签到
+- 获取累计签到次数、连续签到天数和签到奖励
+- 从首页 `color_uploaded` 字段读取站点实际显示的上传量
+- 每天最多一次在首页群聊发送“蛙总，求上传”请求额外上传量
+- 发送后重新读取上传量并计算实际增加值
+- 按 UID 和日期记录发送状态，避免重复刷群聊
+- Cookie 只发送给 `qingwapt.com` 域名族，外域跳转会直接停止
+- 遇到 2FA、验证码、人机验证或 Cloudflare 风控时停止，不尝试绕过
+
+### ⚙️ 青龙配置
+
+在青龙的“环境变量”中创建：
+
+```text
+名称：QINGWA_COOKIE
+值：你的完整 QingWa Cookie
+```
+
+### 📦 依赖
+
+```text
+curl_cffi
+```
+
+### ▶️ 任务命令
+
+```bash
+python3 qingwa.py
+```
+
+### ⏰ 建议定时
+
+```cron
+55 8 * * *
+```
+
+### 🌐 可选环境变量
+
+```text
+QINGWA_BASE_URL=https://www.qingwapt.com
+```
+
+脚本默认已经使用 `https://www.qingwapt.com`，通常无需额外设置。
+
+## 🧾 QingWa 运行示例
+
+```text
+========== QingWa 青蛙 ==========
+
+✅ Cookie 登录有效
+👤 用户：张三
+🆔 UID：10086
+⬆️ 当前上传量：8.888 TB
+📅 今日状态：已签到
+⚠️ 今日已经签到，无需重复执行
+📆 累计签到：123 次
+🔥 连续签到：28 天
+🎁 本次签到：10 魔力
+
+🐸 请求额外上传量...
+💬 发送：蛙总，求上传
+✅ 群聊消息发送成功
+⬆️ 获取后上传量：8.988 TB
+🎁 本次增加上传量：+102.40 GB
+📊 当前魔力：未获取
+
+执行完成 ✅
+```
+
+当天已经自动发送过“蛙总，求上传”时，脚本会跳过重复发送。
 
 ## ⚠️ 免责声明
 
