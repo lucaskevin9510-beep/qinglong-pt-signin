@@ -30,6 +30,7 @@ Each tracker uses its own standalone script and environment variable, so every t
 | CarPT | `carpt.py` | `CARPT_COOKIE` | ✅ Working |
 | HDArea | `hdarea.py` | `HDAREA_COOKIE` | ✅ Working |
 | UBits | `ubits.py` | `UBITS_COOKIE` | ✅ Working |
+| QingWa | `qingwa.py` | `QINGWA_COOKIE` | ✅ Working |
 
 ## 🐱 PterClub
 
@@ -499,6 +500,84 @@ The script already uses `https://ubits.club` by default, so this variable is nor
 
 Completed ✅
 ```
+
+---
+
+## 🐸 QingWa
+
+### ✨ Features
+
+- Validate the login Cookie and read the username and UID
+- Use `attendance.php` for the daily sign-in
+- Read total sign-in count, consecutive sign-in days, and the sign-in reward when available
+- Read the upload total directly from the homepage `color_uploaded` field
+- Send `蛙总，求上传` to the homepage shoutbox at most once per day to request extra upload credit
+- Re-read the upload total after sending and calculate the actual increase
+- Keep a per-UID daily local state to avoid duplicate shoutbox messages
+- Send the Cookie only to the `qingwapt.com` domain family and stop on external redirects
+- Stop on 2FA, CAPTCHA, Cloudflare, or other verification challenges instead of bypassing them
+
+### ⚙️ QingLong Setup
+
+Create the following environment variable in QingLong:
+
+```text
+Name: QINGWA_COOKIE
+Value: your full QingWa Cookie
+```
+
+### 📦 Dependency
+
+```text
+curl_cffi
+```
+
+### ▶️ Task Command
+
+```bash
+python3 qingwa.py
+```
+
+### ⏰ Suggested Schedule
+
+```cron
+55 8 * * *
+```
+
+### 🌐 Optional Environment Variable
+
+```text
+QINGWA_BASE_URL=https://www.qingwapt.com
+```
+
+The script already uses `https://www.qingwapt.com` by default, so this variable is normally unnecessary.
+
+## 🧾 QingWa Example Output
+
+```text
+========== QingWa 青蛙 ==========
+
+✅ Cookie login valid
+👤 User: 张三
+🆔 UID: 10086
+⬆️ Current upload: 8.888 TB
+📅 Today: already signed in
+⚠️ No duplicate sign-in needed
+📆 Total sign-ins: 123
+🔥 Consecutive sign-in: 28 days
+🎁 Current sign-in: 10 magic points
+
+🐸 Requesting extra upload credit...
+💬 Message: 蛙总，求上传
+✅ Shoutbox message sent
+⬆️ Upload after request: 8.988 TB
+🎁 Upload gained: +102.40 GB
+📊 Current magic points: Not available
+
+Completed ✅
+```
+
+If the automatic `蛙总，求上传` request has already been sent for the current day, the script skips the duplicate message.
 
 ## ⚠️ Disclaimer
 
