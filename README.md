@@ -33,6 +33,7 @@
 | QingWa 青蛙 | `qingwa.py` | `QINGWA_COOKIE` | ✅ 可用 |
 | PTSKIT 拾刻 | `ptskit.py` | `PTSKIT_COOKIE` | ✅ 可用 |
 | MomentPT | `moment.py` | `MOMENT_COOKIE` | ✅ 可用 |
+| HXPT 好学 | `hxpt.py` | `HXPT_COOKIE` | ✅ 可用 |
 
 ## 🐱 PterClub 猫站
 
@@ -740,6 +741,75 @@ MOMENT_BASE_URL=https://www.momentpt.top
 ```
 
 当天已经记录过某一条消息时，脚本只跳过该条；未成功确认进入喊话记录的消息不会写入已发送状态。
+
+
+---
+
+## 🎓 HXPT 好学
+
+### ✨ 功能
+
+- 检查 Cookie 登录状态并读取用户名
+- 解析头像下拉区域 `cute-top-profile__summary` / `cute-top-profile__stats`
+- 获取当前火花、上传量、下载量和分享率
+- 使用 `attendance.php` 完成或确认每日签到
+- 根据 `is-attended` 状态类判断当天是否已经签到
+- 火花余额优先通过 `mybonusmine.php` 精确锚点读取
+- 签到后重新读取头像隐藏统计区
+- 外域跳转会直接停止，不继续携带 Cookie 请求
+- 遇到 2FA、验证码、人机验证或风控时停止，不尝试绕过
+
+### ⚙️ 青龙配置
+
+在青龙的“环境变量”中创建：
+
+```text
+名称：HXPT_COOKIE
+值：你的完整 HXPT Cookie
+```
+
+### 📦 依赖
+
+```text
+requests
+```
+
+### ▶️ 任务命令
+
+```bash
+python3 hxpt.py
+```
+
+### ⏰ 建议定时
+
+```cron
+13 9 * * *
+```
+
+### 🌐 可选环境变量
+
+```text
+HXPT_BASE_URL=https://www.hxpt.org
+```
+
+脚本默认已经使用 `https://www.hxpt.org`，通常无需额外设置。
+
+## 🧾 HXPT 运行示例
+
+```text
+========== HXPT 好学 ==========
+
+✅ Cookie 登录有效
+👤 用户：张三
+🔥 当前火花：88,888.8
+⬆️ 上传量：8.888 TB
+⬇️ 下载量：88.88 GB
+📈 分享率：102.345
+📅 今日状态：已签到
+⚠️ 今日已经签到，无需重复执行
+
+执行完成 ✅
+```
 
 ## ⚠️ 免责声明
 
