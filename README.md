@@ -32,6 +32,7 @@
 | UBits | `ubits.py` | `UBITS_COOKIE` | ✅ 可用 |
 | QingWa 青蛙 | `qingwa.py` | `QINGWA_COOKIE` | ✅ 可用 |
 | PTSKIT 拾刻 | `ptskit.py` | `PTSKIT_COOKIE` | ✅ 可用 |
+| MomentPT | `moment.py` | `MOMENT_COOKIE` | ✅ 可用 |
 
 ## 🐱 PterClub 猫站
 
@@ -435,6 +436,7 @@ HDAREA_BASE_URL=https://hdarea.club
 执行完成 ✅
 ```
 
+
 ---
 
 ## 💎 UBits
@@ -655,6 +657,89 @@ PTSKIT_BASE_URL=https://www.ptskit.com
 
 执行完成 ✅
 ```
+
+---
+
+## 🎞️ MomentPT
+
+### ✨ 功能
+
+- 检查 Cookie 登录状态并读取用户名、UID
+- 从首页读取当前魔力值、上传量和下载量
+- 检查今日签到状态，未签到时使用 `attendance.php` 完成每日签到
+- 获取今日签到魔力奖励和补签卡数量
+- 每天依次向喊话框发送“茄子”和“保一条”
+- 两条消息之间随机等待 4～5 秒
+- 按 UID、日期和每条消息分别记录状态，避免重复发送
+- 发送后重新读取魔力值，并在发生变化时显示增减量
+- 外域跳转会直接停止，不继续携带 Cookie 请求
+- 遇到 2FA、验证码、人机验证或风控时停止，不尝试绕过
+
+### ⚙️ 青龙配置
+
+在青龙的“环境变量”中创建：
+
+```text
+名称：MOMENT_COOKIE
+值：你的完整 MomentPT Cookie
+```
+
+### 📦 依赖
+
+```text
+requests
+```
+
+### ▶️ 任务命令
+
+```bash
+python3 moment.py
+```
+
+### ⏰ 建议定时
+
+```cron
+7 9 * * *
+```
+
+### 🌐 可选环境变量
+
+```text
+MOMENT_BASE_URL=https://www.momentpt.top
+```
+
+脚本默认已经使用 `https://www.momentpt.top`，通常无需额外设置。
+
+## 🧾 MomentPT 运行示例
+
+```text
+========== MomentPT ==========
+
+✅ Cookie 登录有效
+👤 用户：张三
+🆔 UID：10086
+💰 当前魔力：888,888
+⬆️ 上传量：8.888 TB
+⬇️ 下载量：888.88 GB
+📅 今日状态：已签到
+⚠️ 今日已经签到，无需重复执行
+🎁 今日签到：10 魔力
+🎫 补签卡：1
+
+🎞️ Moment 每日喊话...
+💬 发送：茄子
+✅ 群聊消息发送成功
+⏳ 等待 4.6 秒后发送下一条...
+💬 发送：保一条
+✅ 群聊消息发送成功
+
+📊 当前魔力：889,139
+🎁 魔力变化：+251
+
+执行完成 ✅
+```
+
+当天已经记录过某一条消息时，脚本只跳过该条；未成功确认进入喊话记录的消息不会写入已发送状态。
 
 ## ⚠️ 免责声明
 
